@@ -15,7 +15,7 @@ enum TheMovieDB_Api {
     case newMovies(page:Int)
     case video(id:Int)
     case actor(ids:[Int])
-    case upcoming()
+    case upcoming(page:Int)
 }
 
 extension TheMovieDB_Api: TargetType {
@@ -41,7 +41,7 @@ extension TheMovieDB_Api: TargetType {
         case .actor:
             return "discover/movie"
         case .upcoming:
-            return "/movie/upcoming"
+            return "movie/upcoming"
         }
     }
     
@@ -55,9 +55,9 @@ extension TheMovieDB_Api: TargetType {
     
     var task: Task {
         switch self {
-        case .recommended, .video, upcoming:
+        case .recommended, .video:
             return .requestParameters(parameters: ["api_key":  TheMovieDB_Api.APIKey], encoding: URLEncoding.queryString)
-        case .popular(let page), .newMovies(let page):
+        case .popular(let page), .newMovies(let page), .upcoming(let page):
             return .requestParameters(parameters: ["page":page, "api_key": TheMovieDB_Api.APIKey], encoding: URLEncoding.queryString)
         case .actor(let ids):
             let params = ids.map({"\($0)"}).joined(separator: ",")

@@ -16,7 +16,7 @@ protocol Network {
 
 struct NetworkManager: Network {
     
-    let provider = MoyaProvider<TheMovieDB_Api>(plugins: [NetworkLoggerPlugin(verbose: false)])
+    let provider = MoyaProvider<TheMovieDB_Api>(plugins: [NetworkLoggerPlugin()])
     
     func getNewMovies(page: Int, completion: @escaping ([Movie])->()){
         provider.request(.newMovies(page: page)) { result in
@@ -59,6 +59,23 @@ struct NetworkManager: Network {
                 do {
                     let result = try JSONDecoder().decode(Results.self, from: response.data)
                     completion(result.movies)
+                } catch let err {
+                    print(err)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func getUpcomingMovies(page: Int, completion: @escaping ([Movie])->()) {
+        
+        provider.request(.upcoming(page: page)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(Results.self, from: response.data)
+                    completion(results.movies)
                 } catch let err {
                     print(err)
                 }

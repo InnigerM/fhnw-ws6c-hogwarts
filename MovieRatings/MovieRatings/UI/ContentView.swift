@@ -9,13 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var viewModel = MovieViewModel()
+    
     var body: some View {
-        Text("Hello, World!")
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+       VStack {
+        ForEach(viewModel.movies) { movie in
+               Text("Result: \(movie.title)")
+           }
+       }
     }
 }
