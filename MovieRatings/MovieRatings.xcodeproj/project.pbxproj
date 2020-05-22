@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -96,7 +96,6 @@
 				A18A07BC0657A4D61B6FF5CB /* Pods-MovieRatings.debug.xcconfig */,
 				AB92FDB734ACD6378017CFC3 /* Pods-MovieRatings.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
