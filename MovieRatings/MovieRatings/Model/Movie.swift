@@ -17,7 +17,7 @@ struct Movie: Codable, Identifiable {
     let posterPath: String
     let id: Int
     let adult: Bool
-    let backdropPath: String
+    let backdropPath: String?
     let originalLanguage: String
     let originalTitle: String
     let genreIDS: [Int]
@@ -45,7 +45,7 @@ struct Movie: Codable, Identifiable {
 extension Movie{
     var fullPosterURL:URL?{
         get{
-            return URL(string: "https://image.tmdb.org/t/p/w500" + backdropPath)
+            return URL(string: "https://image.tmdb.org/t/p/w500" + backdropPath!)
         }
     }
 }
