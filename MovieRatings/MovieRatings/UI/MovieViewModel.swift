@@ -23,9 +23,9 @@ class MovieViewModel: ObservableObject{
     }
     
     func loadNewMovies(){
-         provider?.getUpcomingMovies(page: 1) {[weak self] movies in
-                   print("\(movies.count) new movies loaded")
-                   self?.movies.removeAll()
-            self?.movies.append(contentsOf: movies)}
+        return (provider?.getUpcomingMovies(page: 1) {[weak self] movies in
+            print("\(movies.count) new movies loaded")
+            self?.movies.removeAll()
+            self?.movies.append(contentsOf: movies)})!
     }
 }

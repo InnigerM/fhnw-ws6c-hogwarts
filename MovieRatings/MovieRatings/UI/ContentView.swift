@@ -8,15 +8,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
+
+struct ContentView: SwiftUI.View {
     
     @ObservedObject var viewModel = MovieViewModel()
     
-    var body: some View {
+    var body: some SwiftUI.View {
        VStack {
         ForEach(viewModel.movies) { movie in
-               Text("Result: \(movie.title)")
-           }
+            HStack{
+                VStack { Text(movie.title) // arange sub view in vertical
+                    HStack { Text(String(format:"%.1f", movie.voteAverage))
+                   }
+                 }
+              }
+          }
        }
     }
 }
