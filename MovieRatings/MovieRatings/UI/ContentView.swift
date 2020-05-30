@@ -7,12 +7,14 @@
 //
 import Kingfisher
 import SwiftUI
+import Foundation
 
 
 struct ContentView: SwiftUI.View {
     
     @ObservedObject var viewModel = MovieViewModel()
     private let dbService = DB_Service()
+    @State private var search = ""
     
     init() {
         var myFav = Favourites()
@@ -27,7 +29,8 @@ struct ContentView: SwiftUI.View {
     var body: some SwiftUI.View {
         NavigationView{
             List {
-                ForEach(viewModel.movies) { movie in
+                SearchBar(text: $search)
+                ForEach(viewModel.movies.filter { self.search.isEmpty ?  true : $0.title.localizedCaseInsensitiveContains(self.search)}) { movie in
                     NavigationLink(destination: DetailsView(element: movie)){
                         HStack{
                             KFImage(movie.fullPosterURL)
