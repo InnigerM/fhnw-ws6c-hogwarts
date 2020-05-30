@@ -10,6 +10,7 @@ import SwiftUI
 import Kingfisher
 
 struct DetailsView: SwiftUI.View {
+    @State var clicked: Bool = false;
     var element: Movie;
     
     var body: some SwiftUI.View {
@@ -26,7 +27,15 @@ struct DetailsView: SwiftUI.View {
                     .padding(.leading)
                     .font(.title)
                 Spacer()
-                Image(systemName: "bookmark")
+                Button(action: {
+                    self.clicked = !self.clicked;
+                }){
+                    if(clicked == true){
+                        Image(systemName:"bookmark.fill")
+                    } else{
+                        Image(systemName:"bookmark")
+                    }
+                }
                     .font(.title)
                     .padding(.trailing)
                     .foregroundColor(.yellow)
