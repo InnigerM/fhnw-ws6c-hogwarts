@@ -12,31 +12,33 @@ import SwiftUI
 struct ContentView: SwiftUI.View {
     
     @ObservedObject var viewModel = MovieViewModel()
-//    var vote : Int;
+    //    var vote : Int;
     
     var body: some SwiftUI.View {
         NavigationView{
-        List {
-            ForEach(viewModel.movies) { movie in
-                NavigationLink(destination: DetailsView(element: movie)){
-                HStack{
-                    KFImage(movie.fullPosterURL)
-                        .cancelOnDisappear(true)
-                        .resizable()
-                        .frame(height: 100)
-                        .frame(width: 130)
-                        .cornerRadius(5)
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text(movie.title)
-                        Text(String(format:"%.1f", movie.voteAverage))
-//                        RatingView(rating: vote)
+            List {
+                ForEach(viewModel.movies) { movie in
+                    NavigationLink(destination: DetailsView(element: movie)){
+                        HStack{
+                            KFImage(movie.fullPosterURL)
+                                .cancelOnDisappear(true)
+                                .resizable()
+                                .frame(height: 100)
+                                .frame(width: 130)
+                                .cornerRadius(5)
+                            VStack(alignment: .leading, spacing: 20) {
+                                Text(movie.title)
+                                Text(String(format:"%.1f", movie.voteAverage))
+                                //                        RatingView(rating: vote)
+                            }
+                            Spacer()
+                        }
                     }
-                    Spacer()
-                    }
+                    .navigationBarTitle("Upcoming Movies")
                 }
             }
         }
+        .navigationBarHidden(true)
     }
-}
-
+    
 }
