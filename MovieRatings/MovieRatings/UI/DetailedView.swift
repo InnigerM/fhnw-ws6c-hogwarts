@@ -13,6 +13,7 @@ struct DetailsView: SwiftUI.View {
     var element: Movie;
     
     var body: some SwiftUI.View {
+        ScrollView{
         VStack{
             KFImage(element.fullPosterURL)
                 .renderingMode(.original)
@@ -50,6 +51,7 @@ struct DetailsView: SwiftUI.View {
             Text(element.overview)
                 .padding()
             Spacer()
+        }
         }
         .navigationBarHidden(true)
     }
