@@ -9,23 +9,33 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
 
 DEPENDENCIES:
   - Kingfisher (~> 5.13.0)
   - Kingfisher/SwiftUI (~> 5.13.0)
   - Moya (~> 14.0)
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
     - Moya
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
   Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: 4dc2713e9e8dab15b8bb964550c584cbe965ad7f
+PODFILE CHECKSUM: 59e90c0a515a26d727685f48984b04a8bf029a80
 
 COCOAPODS: 1.9.1

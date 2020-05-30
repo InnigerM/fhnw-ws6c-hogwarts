@@ -28,8 +28,7 @@ struct ContentView: SwiftUI.View {
                                 .cornerRadius(5)
                             VStack(alignment: .leading, spacing: 20) {
                                 Text(movie.title)
-                                Text(String(format:"%.1f", movie.voteAverage))
-                                //                        RatingView(rating: vote)
+                                RatingView(rating: Int(movie.voteAverage / 2))
                             }
                             Spacer()
                         }

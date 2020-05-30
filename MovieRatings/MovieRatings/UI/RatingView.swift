@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct RatingView: View {
-    @Binding var rating: Int
+    var rating: Int
 
     var label = ""
 
@@ -39,9 +39,6 @@ struct RatingView: View {
             ForEach(1..<maximumRating + 1) { number in
                 self.image(for: number)
                     .foregroundColor(number > self.rating ? self.offColor : self.onColor)
-                    .onTapGesture {
-                        self.rating = number
-                    }
             }
         }
     }
@@ -49,6 +46,6 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView(rating: .constant(4))
+        RatingView(rating: 4)
     }
 }
