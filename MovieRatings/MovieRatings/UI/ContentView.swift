@@ -12,7 +12,17 @@ import SwiftUI
 struct ContentView: SwiftUI.View {
     
     @ObservedObject var viewModel = MovieViewModel()
-    //    var vote : Int;
+    private let dbService = DB_Service()
+    
+    init() {
+        var myFav = Favourites()
+        
+        myFav.title = "test title"
+        myFav.voteAverage = 6.5
+        
+        dbService.saveMovie(movie: myFav)
+        
+    }
     
     var body: some SwiftUI.View {
         NavigationView{
