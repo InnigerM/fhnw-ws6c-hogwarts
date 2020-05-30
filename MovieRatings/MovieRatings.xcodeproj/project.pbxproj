@@ -22,6 +22,7 @@
 		D5A8612C2477C88F007C175C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A8612B2477C88F007C175C /* Preview Assets.xcassets */; };
 		D5A8612F2477C88F007C175C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A8612D2477C88F007C175C /* LaunchScreen.storyboard */; };
 		D5ABDD22247C1FA5000C373B /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABDD21247C1FA5000C373B /* RatingView.swift */; };
+		D5C0979124828EDA00CCD160 /* RatingViewDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0979024828EDA00CCD160 /* RatingViewDetailed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		D5A8612E2477C88F007C175C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5A861302477C88F007C175C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5ABDD21247C1FA5000C373B /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		D5C0979024828EDA00CCD160 /* RatingViewDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewDetailed.swift; sourceTree = "<group>"; };
 		F06F832D4C0522103C376FD9 /* Pods_MovieRatings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRatings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				CE530C9B247C08E4003D80A0 /* UpcomingMoviesList.swift */,
 				D5ABDD21247C1FA5000C373B /* RatingView.swift */,
 				CE6ABB23247EA73A009A282A /* DetailedView.swift */,
+				D5C0979024828EDA00CCD160 /* RatingViewDetailed.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				D5ABDD22247C1FA5000C373B /* RatingView.swift in Sources */,
 				D5A6071724780A400066F9ED /* MovieViewModel.swift in Sources */,
 				50655C112478006000D8BE16 /* NetworkManager.swift in Sources */,
+				D5C0979124828EDA00CCD160 /* RatingViewDetailed.swift in Sources */,
 				D5A861272477C88C007C175C /* ContentView.swift in Sources */,
 				CE530C9C247C08E4003D80A0 /* UpcomingMoviesList.swift in Sources */,
 				50655C092477FA2900D8BE16 /* TheMoviedbAPI.swift in Sources */,

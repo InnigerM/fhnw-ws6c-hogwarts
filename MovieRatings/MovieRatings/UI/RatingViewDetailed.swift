@@ -1,24 +1,23 @@
 //
-//  RatingView.swift
+//  RatingViewDetailed.swift
 //  MovieRatings
 //
-//  Created by Marco Inniger on 25.05.20.
+//  Created by Marco Inniger on 30.05.20.
 //  Copyright © 2020 FHNW. All rights reserved.
 //
 
 import SwiftUI
 
-
-struct RatingView: View {
+struct RatingViewDetailed: View {
     var rating: Int
-
+    
     var label = ""
-
-    var maximumRating = 5
-
+    
+    var maximumRating = 10
+    
     var offImage: Image?
     var onImage = Image(systemName: "star.fill")
-
+    
     var disabledColor = Color(red: 0.9, green: 0.9, blue: 0.9)
     var offColor = Color.gray
     var onColor = Color.yellow
@@ -36,7 +35,7 @@ struct RatingView: View {
             if label.isEmpty == false {
                 Text(label)
             }
-
+            
             if(self.rating == 0) {
                 ForEach(1..<maximumRating + 1) { number in
                     self.image(for: number)
@@ -52,7 +51,7 @@ struct RatingView: View {
     }
 }
 
-struct RatingView_Previews: PreviewProvider {
+struct RatingViewDetailed_Previews: PreviewProvider {
     static var previews: some View {
         RatingView(rating: 4)
     }
