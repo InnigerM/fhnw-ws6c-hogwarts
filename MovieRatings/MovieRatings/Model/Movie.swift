@@ -24,7 +24,7 @@ struct Movie: Codable, Identifiable {
     let title: String
     let voteAverage: Double
     let overview, releaseDate: String
-
+    
     enum CodingKeys: String, CodingKey {
         case popularity
         case voteCount = "vote_count"
@@ -45,7 +45,11 @@ struct Movie: Codable, Identifiable {
 extension Movie{
     var fullPosterURL:URL?{
         get{
-            return URL(string: "https://image.tmdb.org/t/p/w500" + backdropPath!)
+            if let backdropUnwrapped = backdropPath {
+                return URL(string: "https://image.tmdb.org/t/p/w500" + backdropUnwrapped)
+            } else {
+                return URL(string: "https://ukmoths.org.uk/site/templates/includes/images/noimageyet420.png")
+            }
         }
     }
 }
