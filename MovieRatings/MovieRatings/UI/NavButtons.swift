@@ -22,11 +22,14 @@ struct NavButtons: View {
                 }){
                     if(self.state == "Popular"){
                         Image(systemName: "person.3.fill")
+                        Text("Popular")
                     } else {
                         Image(systemName: "person.3")
+                        Text("Popular")
                     }
                 }.buttonStyle(BorderlessButtonStyle())
             }
+            Divider()
             Spacer()
             VStack{
                 Button(action: {
@@ -35,21 +38,26 @@ struct NavButtons: View {
                 }){
                     if(self.state == "Upcoming") {
                         Image(systemName: "cloud.sun.fill")
+                        Text("Upcoming")
                     } else {
                         Image(systemName: "cloud.sun")
+                        Text("Upcoming")
                     }
                 }.buttonStyle(BorderlessButtonStyle())
             }
             Spacer()
+            Divider()
             VStack{
                 Button(action: {
                     self.state = "Search"
                     self.viewModel.searchMovies(query: self.search)
                 }){
                     if(self.state == "Search"){
-                        Image(systemName: "magnifyingglass.circle.fill")
+                        Image(systemName: "heart.fill")
+                        Text("Favourite")
                     } else {
-                        Image(systemName: "magnifyingglass.circle")
+                        Image(systemName: "heart")
+                        Text("Favourite")
                     }
                 }.buttonStyle(BorderlessButtonStyle())
             }
