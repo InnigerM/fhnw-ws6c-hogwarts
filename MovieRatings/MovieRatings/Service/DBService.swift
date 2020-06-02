@@ -68,9 +68,6 @@ class DB_Service{
             
             movies.append(movie)
         }
-        
         return movies;
-        
-        //elements.sorted(byKeyPath: "movie.title")
     }
 }

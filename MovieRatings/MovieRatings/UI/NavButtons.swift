@@ -11,7 +11,7 @@ import SwiftUI
 struct NavButtons: View {
     @ObservedObject var viewModel: MovieViewModel
     @Binding var state : String
-    @Binding var search : String
+    private let dbService = DB_Service()
     
     var body: some View {
         HStack{
@@ -51,10 +51,11 @@ struct NavButtons: View {
             Divider()
             VStack{
                 Button(action: {
-                    self.state = "Search"
-                    self.viewModel.searchMovies(query: self.search)
+                    self.state = "Favourite"
+                    let movies = self.dbService.readMoviesFromDatabase()
+                    self.viewModel.updateMovies(favourites: movies)
                 }){
-                    if(self.state == "Search"){
+                    if(self.state == "Favourite"){
                         Image(systemName: "heart.fill")
                         Text("Favourite")
                          .fontWeight(.semibold)

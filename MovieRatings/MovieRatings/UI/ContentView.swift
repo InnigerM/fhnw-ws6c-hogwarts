@@ -13,7 +13,6 @@ import Foundation
 struct ContentView: SwiftUI.View {
     
     @ObservedObject var viewModel = MovieViewModel()
-    private let dbService = DB_Service()
     @State private var search = ""
     @State private var state = "Popular"
     @State var clicked: Bool = false;
@@ -39,23 +38,12 @@ struct ContentView: SwiftUI.View {
                     }){
                         Image(systemName: "paperplane.fill")
                     }
-                        //                    Button(action:{
-                        //                        self.clicked = !self.clicked;
-                        //                        //                        let movies = self.dbService.readMoviesFromDatabase()
-                        //                        //                        self.viewModel.updateMovies(movies: movies)
-                        //                    }){
-                        //                        if(self.clicked == true){
-                        //                            Image(systemName:"bookmark.fill")
-                        //                        } else{
-                        //                            Image(systemName:"bookmark")
-                        //                        }
-                        //                    }
                         .font(.title)
                         .padding(.trailing)
                         .foregroundColor(.yellow)
                 }
                 
-                NavButtons(viewModel: viewModel, state: $state, search: $search)
+                NavButtons(viewModel: viewModel, state: $state)
                 
                 ForEach(viewModel.movies.filter { self.search.isEmpty ?  true : $0.title.localizedCaseInsensitiveContains(self.search)}) { movie in
                     NavigationLink(destination: DetailsView(element: movie)){

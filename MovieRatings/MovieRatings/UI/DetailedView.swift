@@ -52,6 +52,7 @@ struct DetailsView: SwiftUI.View {
                     RatingViewDetailed(rating: Int(element.voteAverage))
                         .padding()
                         .padding(.bottom, 15)
+                    Spacer()
                 }
                 HStack{
                     Text("Release-Date: " + element.releaseDate)
