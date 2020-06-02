@@ -28,4 +28,11 @@ class MovieViewModel: ObservableObject{
             self?.movies.removeAll()
             self?.movies.append(contentsOf: movies)})!
     }
+    
+    func searchMovies(query: String){
+        return (provider?.getQueriedMovies(query: query) {[weak self] movies in
+            print("\(movies.count) new movies loaded")
+            self?.movies.removeAll()
+            self?.movies.append(contentsOf: movies)})!
+    }
 }

@@ -16,6 +16,7 @@ enum TheMovieDB_Api {
     case video(id:Int)
     case actor(ids:[Int])
     case upcoming(page:Int)
+    case search(query:String)
 }
 
 extension TheMovieDB_Api: TargetType {
@@ -42,6 +43,8 @@ extension TheMovieDB_Api: TargetType {
             return "discover/movie"
         case .upcoming:
             return "movie/upcoming"
+        case .search:
+            return "search/movie"
         }
     }
     
@@ -62,6 +65,8 @@ extension TheMovieDB_Api: TargetType {
         case .actor(let ids):
             let params = ids.map({"\($0)"}).joined(separator: ",")
             return .requestParameters(parameters: ["api_key": TheMovieDB_Api.APIKey, "with_people": params], encoding: URLEncoding.queryString)
+        case .search(let query):
+            return .requestParameters(parameters: ["api_key": TheMovieDB_Api.APIKey, "query": query], encoding: URLEncoding.queryString)
         }
     }
     
