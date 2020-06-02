@@ -20,7 +20,7 @@ struct DetailsView: SwiftUI.View {
                 KFImage(element.fullPosterURL)
                     .renderingMode(.original)
                     .resizable()
-                    .padding(.all)
+//                    .padding(.all)
                     .frame(height:250)
                 HStack{
                     Text(element.title)
@@ -51,16 +51,18 @@ struct DetailsView: SwiftUI.View {
                 HStack{
                     RatingViewDetailed(rating: Int(element.voteAverage))
                         .padding()
-                    Spacer()
+                        .padding(.bottom, 15)
                 }
                 HStack{
                     Text("Release-Date: " + element.releaseDate)
-                        .padding()
+                        .padding(.leading, 20)
+                        .padding(.bottom, 15)
                     Spacer()
                 }
                 HStack{
                     Text("Original language: " + element.originalLanguage)
-                        .padding()
+                        .padding(.leading, 20)
+                        .padding(.bottom, 20)
                     Spacer()
                 }
                 HStack{

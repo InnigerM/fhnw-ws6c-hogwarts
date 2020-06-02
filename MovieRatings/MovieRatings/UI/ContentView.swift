@@ -31,20 +31,24 @@ struct ContentView: SwiftUI.View {
         NavigationView{
             List {
                 HStack{
-                SearchBar(text: $search)
-                Button(action:{
-                    //save Movie
-                                     self.clicked = !self.clicked;
-                                 }){
-                                     if(self.clicked == true){
-                                         Image(systemName:"bookmark.fill")
-                                     } else{
-                                         Image(systemName:"bookmark")
-                                     }
-                                 }
-                .font(.title)
-                .padding(.trailing)
-                .foregroundColor(.yellow)
+                    SearchBar(text: $search)
+                    Button(action: {
+                        self.viewModel.searchMovies(query: self.search)
+                    }){
+                        Image(systemName: "paperplane.fill")
+                    }
+                    Button(action:{
+                        self.clicked = !self.clicked;
+                    }){
+                        if(self.clicked == true){
+                            Image(systemName:"bookmark.fill")
+                        } else{
+                            Image(systemName:"bookmark")
+                        }
+                    }
+                    .font(.title)
+                    .padding(.trailing)
+                    .foregroundColor(.yellow)
                 }
                 ForEach(viewModel.movies.filter { self.search.isEmpty ?  true : $0.title.localizedCaseInsensitiveContains(self.search)}) { movie in
                     NavigationLink(destination: DetailsView(element: movie)){
