@@ -23,6 +23,7 @@ struct NavButtons: View {
                     if(self.state == "Popular"){
                         Image(systemName: "person.3.fill")
                         Text("Popular")
+                         .fontWeight(.semibold)
                     } else {
                         Image(systemName: "person.3")
                         Text("Popular")
@@ -39,6 +40,7 @@ struct NavButtons: View {
                     if(self.state == "Upcoming") {
                         Image(systemName: "cloud.sun.fill")
                         Text("Upcoming")
+                         .fontWeight(.semibold)
                     } else {
                         Image(systemName: "cloud.sun")
                         Text("Upcoming")
@@ -55,6 +57,7 @@ struct NavButtons: View {
                     if(self.state == "Search"){
                         Image(systemName: "heart.fill")
                         Text("Favourite")
+                         .fontWeight(.semibold)
                     } else {
                         Image(systemName: "heart")
                         Text("Favourite")
