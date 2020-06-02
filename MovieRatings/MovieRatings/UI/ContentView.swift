@@ -15,9 +15,10 @@ struct ContentView: SwiftUI.View {
     @ObservedObject var viewModel = MovieViewModel()
     private let dbService = DB_Service()
     @State private var search = ""
+    @State var clicked: Bool = false;
     
     init() {
-        var myFav = Favourites()
+        let myFav = Favourites()
         
         myFav.title = "test title"
         myFav.voteAverage = 6.5
@@ -46,11 +47,24 @@ struct ContentView: SwiftUI.View {
                             Spacer()
                         }
                     }
-                    .navigationBarTitle("Upcoming Movies")
+                    HStack{
+                    .navigationBarTitle("Popular Movies")
+                .navigationBarItems(leading:
+                    Button(action:{
+                        self.clicked = !self.clicked;
+                    }){
+                        if(self.clicked == true){
+                            Image(systemName:"bookmark.fill")
+                        } else{
+                            Image(systemName:"bookmark")
+                        }
+                    }
+                    .font(.title)
+                    .foregroundColor(.yellow))
+                    }
                 }
             }
         }
         .navigationBarHidden(true)
     }
-    
 }
