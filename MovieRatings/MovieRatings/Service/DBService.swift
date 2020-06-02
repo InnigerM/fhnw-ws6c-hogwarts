@@ -47,9 +47,29 @@ class DB_Service{
             realm.add(favourite)
         }
     }
-    func readMoviesFromDatabase() -> [Favourites]{
-        let query =  realm.objects(Favourites.self)
-        return Array(query)
+    func readMoviesFromDatabase() -> [Movie]{
+        let favourites =  Array(realm.objects(Favourites.self))
+        var movies = [Movie]()
+        for favourite in favourites{
+            let movie = Movie(popularity: nil,
+                              voteCount: nil,
+                              video: nil,
+                              posterPath: nil,
+                              id: nil,
+                              adult: nil,
+                              backdropPath: nil,
+                              originalLanguage:favourite.originalLanguage,
+                              originalTitle:nil ,
+                              genreIDS: nil,
+                              title: favourite.title ,
+                              voteAverage: favourite.voteAverage,
+                              overview: favourite.overview,
+                              releaseDate: favourite.releaseDate)
+            
+            movies.append(movie)
+        }
+        
+        return movies;
         
         //elements.sorted(byKeyPath: "movie.title")
     }

@@ -35,4 +35,9 @@ class MovieViewModel: ObservableObject{
             self?.movies.removeAll()
             self?.movies.append(contentsOf: movies)})!
     }
+    
+    func updateMovies(movies:[Movie]) {
+        self.movies.removeAll()
+        self.movies.append(contentsOf: movies)
+    }
 }
