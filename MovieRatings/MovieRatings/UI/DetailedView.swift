@@ -38,7 +38,7 @@ struct DetailsView: SwiftUI.View {
                             //saveMovie => exists = false
                         }
                     }){
-                        if(exists){
+                        if(!exists){
                             Image(systemName:"bookmark.fill")
                         } else{
                             Image(systemName:"bookmark")
