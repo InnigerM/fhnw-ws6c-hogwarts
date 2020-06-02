@@ -43,7 +43,7 @@ struct ContentView: SwiftUI.View {
                         .foregroundColor(.yellow)
                 }
                 
-                NavButtons(viewModel: viewModel, state: $state)
+                NavButtons(viewModel: viewModel, state: $state, search: $search)
                 
                 ForEach(viewModel.movies.filter { self.search.isEmpty ?  true : $0.title.localizedCaseInsensitiveContains(self.search)}) { movie in
                     NavigationLink(destination: DetailsView(element: movie)){

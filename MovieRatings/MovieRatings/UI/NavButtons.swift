@@ -11,6 +11,7 @@ import SwiftUI
 struct NavButtons: View {
     @ObservedObject var viewModel: MovieViewModel
     @Binding var state : String
+    @Binding var search: String
     private let dbService = DB_Service()
     
     var body: some View {
@@ -19,6 +20,7 @@ struct NavButtons: View {
                 Button(action: {
                     self.state = "Popular"
                     self.viewModel.loadNewMovies()
+                    self.search=""
                 }){
                     if(self.state == "Popular"){
                         Image(systemName: "person.3.fill")
@@ -36,6 +38,7 @@ struct NavButtons: View {
                 Button(action: {
                     self.state = "Upcoming"
                     self.viewModel.loadUpcomingMovies()
+                    self.search=""
                 }){
                     if(self.state == "Upcoming") {
                         Image(systemName: "cloud.sun.fill")
@@ -54,6 +57,7 @@ struct NavButtons: View {
                     self.state = "Favourite"
                     let movies = self.dbService.readMoviesFromDatabase()
                     self.viewModel.updateMovies(favourites: movies)
+                    self.search=""
                 }){
                     if(self.state == "Favourite"){
                         Image(systemName: "heart.fill")

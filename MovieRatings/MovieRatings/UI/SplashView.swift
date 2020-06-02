@@ -22,11 +22,9 @@ struct SplashView: View {
                     Image("icons8-movie-projector-100")
                         .resizable()
                         .frame(width: 150, height: 150)
-                    Text("Movie Database")
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
-                .background(Color.yellow)
             }
         }
         .onAppear {
