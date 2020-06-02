@@ -10,7 +10,8 @@ import SwiftUI
 import Kingfisher
 
 struct DetailsView: SwiftUI.View {
-    @State var clicked: Bool = false;
+    private let dbService = DB_Service()
+    @State var exists = false;
     var element: Movie;
     
     var body: some SwiftUI.View {
@@ -28,9 +29,16 @@ struct DetailsView: SwiftUI.View {
                         .font(.title)
                     Spacer()
                     Button(action: {
-                        self.clicked = !self.clicked;
+                        self.exists = self.dbService.findMovie(movieTitle: self.element.title)
+                        if (self.exists){
+                            //deleteMovie => exists = true
+                        }
+                        else{
+                            self.dbService.saveMovie(movie: self.element)
+                            //saveMovie => exists = false
+                        }
                     }){
-                        if(clicked == true){
+                        if(exists){
                             Image(systemName:"bookmark.fill")
                         } else{
                             Image(systemName:"bookmark")

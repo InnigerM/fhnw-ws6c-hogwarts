@@ -23,7 +23,7 @@ struct ContentView: SwiftUI.View {
         myFav.title = "test title"
         myFav.voteAverage = 6.5
         
-        dbService.saveMovie(movie: myFav)
+        //dbService.saveMovie(movie: myFav)
         
     }
     
@@ -33,7 +33,8 @@ struct ContentView: SwiftUI.View {
                 HStack{
                 SearchBar(text: $search)
                 Button(action:{
-                    self.clicked = !self.clicked;
+                    //save Movie
+                                     self.clicked = !self.clicked;
                                  }){
                                      if(self.clicked == true){
                                          Image(systemName:"bookmark.fill")
