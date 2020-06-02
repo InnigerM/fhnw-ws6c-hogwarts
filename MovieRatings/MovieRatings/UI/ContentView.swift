@@ -39,6 +39,7 @@ struct ContentView: SwiftUI.View {
                     }
                     Button(action:{
                         self.clicked = !self.clicked;
+                        self.dbService.readMoviesFromDatabase()
                     }){
                         if(self.clicked == true){
                             Image(systemName:"bookmark.fill")

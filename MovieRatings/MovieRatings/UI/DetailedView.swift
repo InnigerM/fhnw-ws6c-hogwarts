@@ -31,7 +31,7 @@ struct DetailsView: SwiftUI.View {
                     Button(action: {
                         self.exists = self.dbService.findMovie(movieTitle: self.element.title)
                         if (self.exists){
-                            //deleteMovie => exists = true
+                            self.dbService.deleteMovie(movieTitle: self.element.title)
                         }
                         else{
                             self.dbService.saveMovie(movie: self.element)

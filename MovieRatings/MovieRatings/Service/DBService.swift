@@ -16,8 +16,11 @@ class DB_Service{
         print(Realm.Configuration.defaultConfiguration.fileURL?.absoluteString ?? "realm config not found")
     }
     
-    func deleteMovie(movie: Movie) {
-        
+    func deleteMovie(movieTitle:String) {
+        let objectToDelete = realm.objects(Favourites.self).filter("title = '\(movieTitle)'")
+        try! realm.write {
+            realm.delete(objectToDelete)
+        }
     }
     
     func findMovie(movieTitle: String) -> Bool {
@@ -43,5 +46,11 @@ class DB_Service{
         try! realm.write {
             realm.add(favourite)
         }
+    }
+    func readMoviesFromDatabase() -> [Favourites]{
+        let query =  realm.objects(Favourites.self)
+        return Array(query)
+        
+        //elements.sorted(byKeyPath: "movie.title")
     }
 }
