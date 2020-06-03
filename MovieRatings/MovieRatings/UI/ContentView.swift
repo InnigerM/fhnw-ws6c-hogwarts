@@ -22,9 +22,6 @@ struct ContentView: SwiftUI.View {
         
         myFav.title = "test title"
         myFav.voteAverage = 6.5
-        
-        //dbService.saveMovie(movie: myFav)
-        
     }
     
     var body: some SwiftUI.View {

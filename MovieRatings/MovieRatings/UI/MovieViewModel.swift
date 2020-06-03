@@ -12,6 +12,7 @@ import SwiftUI
 class MovieViewModel: ObservableObject{
     
     private let provider: NetworkManager?
+    private let dbService = DB_Service()
     
     @Published var movies = [Movie]()
     
@@ -43,9 +44,23 @@ class MovieViewModel: ObservableObject{
             self?.movies.append(contentsOf: movies)})!
     }
     
+    func loadFavorites(){
+        let movies = self.dbService.readMoviesFromDatabase()
+        self.movies.removeAll()
+        for movie in movies {
+            (provider?.getQueriedMovies(query: movie.title) {[weak self] movies in
+                let newMovie = movies.first
+                print("\(newMovie!.title) loaded")
+                self?.movies.append(newMovie!)})!
+        }
+        
+    }
+        
     func updateMovies(movies: [Movie]) {
         print("\(movies.count) new movies loaded")
         self.movies.removeAll()
-        self.movies = movies
+        for movie in movies {
+            self.movies.append(movie)
+        }
     }
 }

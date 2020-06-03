@@ -55,8 +55,8 @@ struct NavButtons: View {
             VStack{
                 Button(action: {
                     self.state = "Favourite"
-                    let movies = self.dbService.readMoviesFromDatabase()
-                    self.viewModel.updateMovies(movies: movies)
+                    //let movies = self.dbService.readMoviesFromDatabase()
+                    self.viewModel.loadFavorites()
                     self.search=""
                 }){
                     if(self.state == "Favourite"){
