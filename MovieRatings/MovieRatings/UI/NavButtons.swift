@@ -25,7 +25,7 @@ struct NavButtons: View {
                     if(self.state == "Popular"){
                         Image(systemName: "person.3.fill")
                         Text("Popular")
-                         .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                     } else {
                         Image(systemName: "person.3")
                         Text("Popular")
@@ -43,7 +43,7 @@ struct NavButtons: View {
                     if(self.state == "Upcoming") {
                         Image(systemName: "cloud.sun.fill")
                         Text("Upcoming")
-                         .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                     } else {
                         Image(systemName: "cloud.sun")
                         Text("Upcoming")
@@ -56,13 +56,13 @@ struct NavButtons: View {
                 Button(action: {
                     self.state = "Favourite"
                     let movies = self.dbService.readMoviesFromDatabase()
-                    self.viewModel.updateMovies(favourites: movies)
+                    self.viewModel.updateMovies(movies: movies)
                     self.search=""
                 }){
                     if(self.state == "Favourite"){
                         Image(systemName: "heart.fill")
                         Text("Favourite")
-                         .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                     } else {
                         Image(systemName: "heart")
                         Text("Favourite")

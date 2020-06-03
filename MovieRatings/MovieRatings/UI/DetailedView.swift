@@ -20,7 +20,6 @@ struct DetailsView: SwiftUI.View {
                 KFImage(element.fullPosterURL)
                     .renderingMode(.original)
                     .resizable()
-//                    .padding(.all)
                     .frame(height:250)
                 HStack{
                     Text(element.title)
@@ -35,10 +34,10 @@ struct DetailsView: SwiftUI.View {
                         }
                         else{
                             self.dbService.saveMovie(movie: self.element)
-                            //saveMovie => exists = false
                         }
+                        self.exists = self.dbService.findMovie(movieTitle: self.element.title)
                     }){
-                        if(!exists){
+                        if(self.exists){
                             Image(systemName:"bookmark.fill")
                         } else{
                             Image(systemName:"bookmark")
@@ -77,6 +76,9 @@ struct DetailsView: SwiftUI.View {
                     .padding()
                 Spacer()
             }
+        }
+        .onAppear {
+            self.exists = self.dbService.findMovie(movieTitle: self.element.title)
         }
         .navigationBarHidden(true)
     }

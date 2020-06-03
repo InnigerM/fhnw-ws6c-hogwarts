@@ -18,7 +18,7 @@ class MovieViewModel: ObservableObject{
     init(provider: NetworkManager? = NetworkManager(), movies: [Movie] = []) {
         self.provider = provider
         self.movies = movies
-
+        
         loadNewMovies()
     }
     
@@ -43,10 +43,9 @@ class MovieViewModel: ObservableObject{
             self?.movies.append(contentsOf: movies)})!
     }
     
-    func updateMovies(favourites:[Movie]) {
-        //print(favourites)
+    func updateMovies(movies: [Movie]) {
+        print("\(movies.count) new movies loaded")
         self.movies.removeAll()
-        self.movies.append(contentsOf: favourites)
-        print(self.movies)
+        self.movies = movies
     }
 }
