@@ -78,6 +78,7 @@ struct DetailsView: SwiftUI.View {
             }
         }
         .onAppear {
+            print(self.element)
             self.exists = self.dbService.findMovie(movieTitle: self.element.title)
         }
         .navigationBarHidden(true)

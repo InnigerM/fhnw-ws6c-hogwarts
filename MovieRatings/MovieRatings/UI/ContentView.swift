@@ -42,7 +42,7 @@ struct ContentView: SwiftUI.View {
                 
                 NavButtons(viewModel: viewModel, state: $state, search: $search)
                 
-                ForEach(viewModel.movies.filter { self.search.isEmpty ?  true : $0.title.localizedCaseInsensitiveContains(self.search)}) { movie in
+                ForEach(viewModel.movies.filter { self.search.isEmpty ?  true : $0.title.localizedCaseInsensitiveContains(self.search)}, id: \.title) { movie in
                     NavigationLink(destination: DetailsView(element: movie)){
                         HStack{
                             KFImage(movie.fullPosterURL)

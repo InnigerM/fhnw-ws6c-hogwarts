@@ -15,5 +15,5 @@ public class Favourites: Object{
     @objc dynamic var overview: String=""
     @objc dynamic var releaseDate: String=""
     @objc dynamic var originalLanguage: String=""
-    //@objc dynamic var backdropPath: String=""
+    @objc dynamic var backdropPath: String?=""
 }

@@ -38,32 +38,37 @@ class DB_Service{
         favourite.overview = movie.overview
         favourite.releaseDate = movie.releaseDate
         
+        if let backdropUnwrapped = movie.backdropPath {
+            favourite.backdropPath = backdropUnwrapped
+        } else  {
+            favourite.backdropPath = nil
+        }
+        
         try! realm.write {
             realm.add(favourite)
         }
     }
-    func readMoviesFromDatabase() -> [Movie]{
+    func readMoviesFromDatabase(completion: @escaping ([Movie]) -> ()){
         let favourites =  Array(realm.objects(Favourites.self))
         var movies = [Movie]()
         for favourite in favourites{
-            let movie = Movie(popularity: nil,
-                              voteCount: nil,
-                              video: nil,
-                              posterPath: nil,
-                              id: nil,
-                              adult: nil,
-                              backdropPath: nil,
+            let movie = Movie(popularity: Optional(nil),
+                              voteCount: Optional(nil),
+                              video: Optional(nil),
+                              posterPath: Optional(nil),
+                              id: Optional(nil),
+                              adult: Optional(nil),
+                              backdropPath: favourite.backdropPath,
                               originalLanguage:favourite.originalLanguage,
-                              originalTitle:nil ,
-                              genreIDS: nil,
+                              originalTitle: Optional(nil),
+                              genreIDS: Optional(nil),
                               title: favourite.title ,
                               voteAverage: favourite.voteAverage,
                               overview: favourite.overview,
                               releaseDate: favourite.releaseDate)
-                            
             
             movies.append(movie)
         }
-        return movies;
+        completion(movies)
     }
 }

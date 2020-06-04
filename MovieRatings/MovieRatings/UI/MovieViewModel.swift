@@ -34,7 +34,9 @@ class MovieViewModel: ObservableObject{
         return (provider?.getUpcomingMovies(page: 1) {[weak self] movies in
             print("\(movies.count) new movies loaded")
             self?.movies.removeAll()
-            self?.movies.append(contentsOf: movies)})!
+            self?.movies.append(contentsOf: movies)
+            print(self?.movies)
+            })!
     }
     
     func searchMovies(query: String){
@@ -45,22 +47,18 @@ class MovieViewModel: ObservableObject{
     }
     
     func loadFavorites(){
-        let movies = self.dbService.readMoviesFromDatabase()
-        self.movies.removeAll()
-        for movie in movies {
-            (provider?.getQueriedMovies(query: movie.title) {[weak self] movies in
-                let newMovie = movies.first
-                print("\(newMovie!.title) loaded")
-                self?.movies.append(newMovie!)})!
-        }
+        return (self.dbService.readMoviesFromDatabase() {[weak self] movies in
+            self?.movies.removeAll()
+            self?.movies.append(contentsOf: movies)
+            print(self?.movies)
+        })
         
     }
-        
+    
     func updateMovies(movies: [Movie]) {
         print("\(movies.count) new movies loaded")
         self.movies.removeAll()
-        for movie in movies {
-            self.movies.append(movie)
-        }
+        self.movies.append(contentsOf: movies)
+        print(self.movies)
     }
 }
