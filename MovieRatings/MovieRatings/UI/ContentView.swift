@@ -31,13 +31,13 @@ struct ContentView: SwiftUI.View {
                     SearchBar(text: $search)
                     Button(action: {
                         self.viewModel.searchMovies(query: self.search)
-                        self.state = "search"
+                        self.state = "Found"
                     }){
                         Image(systemName: "paperplane.fill")
                     }
-                        .font(.title)
-                        .padding(.trailing)
-                        .foregroundColor(.yellow)
+                    .font(.title)
+                    .padding(.trailing)
+                    .foregroundColor(.yellow)
                 }
                 
                 NavButtons(viewModel: viewModel, state: $state, search: $search)
@@ -58,10 +58,10 @@ struct ContentView: SwiftUI.View {
                             Spacer()
                         }
                     }
-                    .navigationBarTitle("\(self.state) Movies")
                 }
             }
+            .navigationBarTitle("\(self.state) Movies")
+            .navigationBarHidden(false)
         }
-        .navigationBarHidden(true)
     }
 }

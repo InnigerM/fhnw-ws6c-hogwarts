@@ -62,7 +62,7 @@ class DB_Service{
                               originalLanguage:favourite.originalLanguage,
                               originalTitle: Optional(nil),
                               genreIDS: Optional(nil),
-                              title: favourite.title ,
+                              title: favourite.title,
                               voteAverage: favourite.voteAverage,
                               overview: favourite.overview,
                               releaseDate: favourite.releaseDate)
